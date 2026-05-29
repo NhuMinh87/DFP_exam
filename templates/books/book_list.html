@@ -1,19 +1,95 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Book List</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f6f9;
+            margin: 0;
+            padding: 40px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: auto;
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        h1 {
+            text-align: center;
+            color: #2c3e50;
+            margin-bottom: 25px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th {
+            background: #3498db;
+            color: white;
+            padding: 12px;
+        }
+
+        td {
+            padding: 12px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        tr:nth-child(even) {
+            background: #f8f9fa;
+        }
+
+        tr:hover {
+            background: #eaf4ff;
+        }
+
+        .price {
+            color: #27ae60;
+            font-weight: bold;
+        }
+
+        .created {
+            color: #7f8c8d;
+            font-size: 14px;
+        }
+    </style>
 </head>
 <body>
 
-<h1>Book List</h1>
+<div class="container">
+    <h1>📚 Book Management</h1>
 
-<ul>
-{% for book in books %}
-    <li>
-        {{ book.title }} - {{ book.author }} - {{ book.price }}
-    </li>
-{% endfor %}
-</ul>
+    <table>
+        <thead>
+        <tr>
+            <th>Title</th>
+            <th>Author</th>
+            <th>Price ($)</th>
+            <th>Created At</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        {% for book in books %}
+        <tr>
+            <td>{{ book.title }}</td>
+            <td>{{ book.author }}</td>
+            <td class="price">{{ book.price }}</td>
+            <td class="created">{{ book.created_at }}</td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
 
 </body>
 </html>
